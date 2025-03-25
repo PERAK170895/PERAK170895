@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard User - BCA Internet Banking</title>
+    <style>
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #004AAD;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .menu button {
+            background-color: #004AAD;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .menu button:hover {
+            background-color: #002D72;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">Selamat Datang di BCA Internet Banking</div>
+    <div class="container">
+        <h2>Informasi Akun</h2>
+        <p><strong>Nama:</strong> <span id="username"></span></p>
+        <p><strong>Saldo:</strong> Rp 25.000.000</p>
+        <div class="menu">
+            <button onclick="location.href='transfer.html'">Transfer</button>
+            <button onclick="location.href='mutasi.html'">Mutasi Rekening</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+    <div class="footer">&copy; 2025 PT Bank Central Asia Tbk.</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var username = localStorage.getItem("username");
+            if (!username) {
+                window.location.href = "index.html";
+            }
+            document.getElementById("username").textContent = username;
+        });
+        function logout() {
+            localStorage.removeItem("loggedIn");
+            localStorage.removeItem("username");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
