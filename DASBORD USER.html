@@ -71,16 +71,22 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var username = localStorage.getItem("username");
-            if (!username) {
+            var loggedIn = localStorage.getItem("loggedIn");
+            if (!username || loggedIn !== "true") {
                 window.location.href = "index.html";
             }
             document.getElementById("username").textContent = username;
         });
+        
         function logout() {
             localStorage.removeItem("loggedIn");
             localStorage.removeItem("username");
             window.location.href = "index.html";
         }
+        
+        window.addEventListener("popstate", function() {
+            logout();
+        });
     </script>
 </body>
 </html>
