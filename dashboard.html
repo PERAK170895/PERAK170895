@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Selamat Datang di Dashboard</h1>
-    <nav>
-      <a href="dashboard.html">Beranda</a>
-      <a href="kontak.html">Kontak</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="index.html">Logout</a>
-    </nav>
-  </header>
-  <main>
-    <p>Ini adalah halaman utama setelah login.</p>
-  </main>
+    <header>
+        <h1>Selamat Datang di Dashboard</h1>
+        <nav>
+            <a href="dashboard.html">Beranda</a>
+            <a href="kontak.html">Kontak</a>
+            <a href="tentang.html">Tentang</a>
+            <a href="index.html" onclick="logout()">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="info">
+            <h2>Aktivitas Terbaru</h2>
+            <p>Tidak ada aktivitas baru saat ini.</p>
+        </section>
+
+        <section class="stats">
+            <h2>Statistik</h2>
+            <ul>
+                <li>Pengguna aktif: 102</li>
+                <li>Pesan masuk: 23</li>
+                <li>Login terakhir: 5 menit yang lalu</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Dashboard Kamu</p>
+    </footer>
+
+    <script>
+        function logout() {
+            alert("Anda telah logout.");
+        }
+    </script>
 </body>
 </html>
