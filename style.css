@@ -3,9 +3,16 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-image: url('https://i.postimg.cc/YC7RF2yb/bcg.jpg');
   color: #333;
   text-align: center;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* lapisan gelap 30% */
+  z-index: -1;
 }
 
 /* Header */
@@ -168,4 +175,31 @@ main {
 .login-logo {
   width: 100px;
   margin-bottom: 1rem;
+}
+.logout-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+}
+
+#user-email {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+#logout-btn {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+#logout-btn:hover {
+  background-color: #c62828;
 }

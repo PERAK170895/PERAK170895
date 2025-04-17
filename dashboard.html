@@ -7,14 +7,20 @@
 </head>
 <body>
     <header>
-        <h1>Selamat Datang di Dashboard</h1>
+        <h1>Selamat Datang di Server Baru</h1>
         <nav>
             <a href="dashboard.html">Beranda</a>
             <a href="kontak.html">Kontak</a>
             <a href="tentang.html">Tentang</a>
-            <a href="index.html" onclick="logout()">Logout</a>
         </nav>
     </header>
+
+    <div id="user-info" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: #f2f2f2;">
+        <span id="user-email" style="font-weight: bold;">Memuat email...</span>
+        <button id="logout-btn" style="background-color: red; color: white; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer;">
+            Logout
+        </button>
+    </div>
 
     <main>
         <section class="info">
@@ -36,10 +42,51 @@
         <p>&copy; 2025 Dashboard Kamu</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        function logout() {
-            alert("Anda telah logout.");
+        const supabaseUrl = 'https://piybzyheydavoujfptnx.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpeWJ6eWhleWRhdm91amZwdG54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4ODc0OTksImV4cCI6MjA1NTQ2MzQ5OX0.iFy_6QuuCfzKFh5MAyIgkwVGM-X7ygkKkhsLM_JhUvg';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function checkSession() {
+            const { data, error } = await supabase.auth.getSession();
+            if (error) {
+                console.error("Gagal mengambil sesi:", error.message);
+                return;
+            }
+
+            const session = data.session;
+            if (!session || !session.user) {
+                // Tidak ada session aktif
+                window.location.href = "index.html";
+            } else {
+                const email = session.user.email;
+                document.getElementById("user-email").textContent = "Login sebagai: " + email.slice(0, 7) + "...";
+            }
         }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            // Cek session di awal
+            await checkSession();
+
+            // Tambahkan listener realtime perubahan auth
+            supabase.auth.onAuthStateChange(async (event, session) => {
+                if (!session) {
+                    window.location.href = "index.html";
+                }
+            });
+
+            // Logout handler
+            document.getElementById("logout-btn").addEventListener("click", async () => {
+                const { error } = await supabase.auth.signOut();
+                if (error) {
+                    alert("Gagal logout: " + error.message);
+                } else {
+                    alert("Logout berhasil!");
+                    window.location.href = "index.html";
+                }
+            });
+        });
     </script>
 </body>
 </html>
