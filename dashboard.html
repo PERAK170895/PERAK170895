@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styled.css">
 </head>
 <body>
     <header>
@@ -15,11 +15,9 @@
         </nav>
     </header>
 
-    <div id="user-info" style="display: flex; align-items: center; justify-content: space-between; padding: 10px; background-color: #f2f2f2;">
-        <span id="user-email" style="font-weight: bold;">Memuat email...</span>
-        <button id="logout-btn" style="background-color: red; color: white; border: none; padding: 8px 14px; border-radius: 5px; cursor: pointer;">
-            Logout
-        </button>
+    <div id="user-info">
+        <span id="user-email">Memuat email...</span>
+        <button id="logout-btn">Logout</button>
     </div>
 
     <main>
@@ -36,57 +34,25 @@
                 <li>Login terakhir: 5 menit yang lalu</li>
             </ul>
         </section>
+        <section class="upload-section">
+            <h2>Upload File</h2>
+            <input type="file" id="file-input">
+            <button id="upload-btn">Upload</button>
+        </section>
+        
+        <section class="file-list">
+            <h2>File Tersimpan</h2>
+            <ul id="files-ul"></ul>
+        </section>
+        
     </main>
 
     <footer>
-        <p>&copy; 2025 Dirga putra zai @spss </p>
+        <p>&copy; Dirga putra zai 2025@spss </p>
     </footer>
 
+    <!-- Load Supabase dan script.js -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        const supabaseUrl = 'https://piybzyheydavoujfptnx.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpeWJ6eWhleWRhdm91amZwdG54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4ODc0OTksImV4cCI6MjA1NTQ2MzQ5OX0.iFy_6QuuCfzKFh5MAyIgkwVGM-X7ygkKkhsLM_JhUvg';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-        async function checkSession() {
-            const { data, error } = await supabase.auth.getSession();
-            if (error) {
-                console.error("Gagal mengambil sesi:", error.message);
-                return;
-            }
-
-            const session = data.session;
-            if (!session || !session.user) {
-                // Tidak ada session aktif
-                window.location.href = "index.html";
-            } else {
-                const email = session.user.email;
-                document.getElementById("user-email").textContent = "User id: " + email.slice(0, 7) + "...";
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", async () => {
-            // Cek session di awal
-            await checkSession();
-
-            // Tambahkan listener realtime perubahan auth
-            supabase.auth.onAuthStateChange(async (event, session) => {
-                if (!session) {
-                    window.location.href = "index.html";
-                }
-            });
-
-            // Logout handler
-            document.getElementById("logout-btn").addEventListener("click", async () => {
-                const { error } = await supabase.auth.signOut();
-                if (error) {
-                    alert("Gagal logout: " + error.message);
-                } else {
-                    alert("Logout berhasil!");
-                    window.location.href = "index.html";
-                }
-            });
-        });
-    </script>
+    <script src="scriptd.js"></script>
 </body>
 </html>
