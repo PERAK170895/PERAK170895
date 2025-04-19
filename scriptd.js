@@ -18,7 +18,51 @@ async function checkSession() {
     } else {
         const email = session.user.email;
         document.getElementById("user-email").textContent = "User id: " + email.slice(0, 7) + "...";
+
+        // ⏱️ Update logins table
+        const { error: upsertError } = await supabase.from("logins").upsert([
+            {
+                user_id: session.user.id,
+                email: session.user.email,
+                last_login: new Date().toISOString(),
+                is_online: true,
+            }
+        ], { onConflict: ['user_id'] });
+
+        if (upsertError) {
+            console.error("Gagal update login tracking:", upsertError.message);
+        }
     }
+}
+
+async function updateStats() {
+    const statsEl = document.querySelector(".stats ul");
+
+    const { data: onlineUsers, error: onlineError } = await supabase
+        .from("logins")
+        .select("*", { count: "exact" })
+        .eq("is_online", true);
+
+    const { data: recentLogins, error: recentError } = await supabase
+        .from("logins")
+        .select("last_login")
+        .order("last_login", { ascending: false })
+        .limit(1);
+
+    if (onlineError || recentError) {
+        console.error("Gagal memuat statistik:", onlineError?.message || recentError?.message);
+        return;
+    }
+
+    const lastLoginText = recentLogins.length > 0
+        ? new Date(recentLogins[0].last_login).toLocaleString("id-ID")
+        : "Tidak tersedia";
+
+    statsEl.innerHTML = `
+        <li>Pengguna aktif: ${onlineUsers.length}</li>
+        <li>Pesan masuk: 0 (placeholder)</li>
+        <li>Login terakhir: ${lastLoginText}</li>
+    `;
 }
 
 async function listFiles() {
@@ -52,9 +96,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await checkSession();
     await listFiles();
+    await updateStats();
+    setInterval(updateStats, 10000);
 
     // Logout handler
     document.getElementById("logout-btn").addEventListener("click", async () => {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const user = sessionData.session?.user;
+
+        if (user) {
+            await supabase.from("logins").update({ is_online: false }).eq("user_id", user.id);
+        }
+
         const { error } = await supabase.auth.signOut();
         if (error) {
             alert("Gagal logout: " + error.message);
