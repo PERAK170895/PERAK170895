@@ -1,11 +1,27 @@
-body {
-  font-family: Arial, sans-serif;
+/* Layout dasar biar footer tetap di bawah */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  margin-top: auto;
+  text-align: center;
+  background-color: #dddddd;
+  padding: 10px;
 }
 
 header {
-  background-color: #333;
+  background-color: #63eed0;
   color: white;
   padding: 1em;
   text-align: center;
@@ -31,36 +47,27 @@ nav a {
 
 #logout-btn {
   background-color: red;
-  color: #c1df16;
+  color: #0a0a0a;
   border: none;
   padding: 8px 14px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-main {
-  padding: 20px;
-}
-
-footer {
-  text-align: center;
-  background-color: #ddd;
-  padding: 10px;
-}
 .upload-section,
 .file-list {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 input[type="file"] {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .file-list ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .file-list li {
-    margin: 5px 0;
+  margin: 5px 0;
 }
