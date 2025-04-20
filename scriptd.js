@@ -1,5 +1,5 @@
 const supabaseUrl = 'https://piybzyheydavoujfptnx.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpeWJ6eWhleWRhdm91amZwdG54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4ODc0OTksImV4cCI6MjA1NTQ2MzQ5OX0.iFy_6QuuCfzKFh5MAyIgkwVGM-X7ygkKkhsLM_JhUvg';
+const supabaseKey = '...'; // amanin key di production ya!
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 const bucketName = "files";
 
@@ -19,7 +19,6 @@ async function checkSession() {
         const email = session.user.email;
         document.getElementById("user-email").textContent = "User id: " + email.slice(0, 7) + "...";
 
-        // ⏱️ Update logins table
         const { error: upsertError } = await supabase.from("logins").upsert([
             {
                 user_id: session.user.id,
@@ -141,6 +140,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         } else {
             alert("✅ File berhasil di-upload!");
             listFiles(); // Refresh daftar file
+        }
+    });
+
+    // 🌓 DARK MODE TOGGLE
+    const toggle = document.getElementById("dark-mode-toggle");
+
+    // Set awal dark mode jika tersimpan di localStorage
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark");
+        toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+            document.body.classList.add("dark");
+            localStorage.setItem("darkMode", "true");
+        } else {
+            document.body.classList.remove("dark");
+            localStorage.setItem("darkMode", "false");
         }
     });
 });
