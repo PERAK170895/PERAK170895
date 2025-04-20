@@ -75,3 +75,18 @@ input[type="file"] {
 .file-list li {
   margin: 5px 0;
 }
+body.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark header,
+body.dark footer,
+body.dark #user-info {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark nav a {
+  color: #f0f0f0;
+}
