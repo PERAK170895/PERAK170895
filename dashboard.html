@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="styled.css">
+  <meta charset="UTF-8" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styled.css" />
 </head>
 <body>
-    <header>
-        <h1>Selamat Datang di Server Baru</h1>
-        <nav>
-            <a href="dashboard.html">Beranda</a>
-            <a href="kontak.html">Kontak</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Selamat Datang di Server Baru</h1>
+    <nav>
+      <a href="dashboard.html">Beranda</a>
+      <a href="kontak.html">Kontak</a>
+    </nav>
+  </header>
 
-    <div id="user-info">
-        <span id="user-email">Memuat email...</span>
-        <button id="logout-btn">Logout</button>
-    </div>
+  <!-- Musik autoplay dengan kontrol -->
+  <audio controls autoplay>
+    <source src="musik.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio tag.
+  </audio>
 
-    <main>
-        <section class="info">
-            <h2>Aktivitas Terbaru</h2>
-            <p>Tidak ada aktivitas baru saat ini.</p>
-        </section>
+  <div id="user-info">
+    <span id="user-email">Memuat email...</span>
+    <button id="logout-btn">Logout</button>
 
-        <section class="stats">
-            <h2>Statistik</h2>
-            <ul>
-                <li>Pengguna aktif: 102</li>
-                <li>Pesan masuk: 23</li>
-                <li>Login terakhir: 5 menit yang lalu</li>
-            </ul>
-        </section>
-        <section class="upload-section">
-            <h2>Upload File</h2>
-            <input type="file" id="file-input">
-            <button id="upload-btn">Upload</button>
-        </section>
-        
-        <section class="file-list">
-            <h2>File Tersimpan</h2>
-            <ul id="files-ul"></ul>
-        </section>
-        
-    </main>
+    <!-- Dark Mode Toggle -->
+    <label style="display: flex; align-items: center; gap: 8px;">
+      <input type="checkbox" id="dark-mode-toggle" />
+      Dark Mode
+    </label>
+  </div>
 
-    <footer>
-        <p>&copy; Dirga putra zai 2025@spss </p>
-    </footer>
+  <main>
+    <section class="info">
+      <h2>Aktivitas Terbaru</h2>
+      <p>Tidak ada aktivitas baru saat ini.</p>
+    </section>
 
-    <!-- Load Supabase dan script.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="scriptd.js"></script>
+    <section class="stats">
+      <h2>Statistik</h2>
+      <ul>
+        <li>Pengguna aktif: -</li>
+        <li>Pesan masuk: -</li>
+        <li>Login terakhir: -</li>
+      </ul>
+    </section>
+
+    <section class="upload-section">
+      <h2>Upload File</h2>
+      <input type="file" id="file-input" />
+      <button id="upload-btn">Upload</button>
+    </section>
+
+    <section class="file-list">
+      <h2>File Tersimpan</h2>
+      <ul id="files-ul"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Dirga Putra Zai 2025@spss</p>
+  </footer>
+
+  <!-- Supabase dan script.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="scriptd.js"></script>
 </body>
 </html>
