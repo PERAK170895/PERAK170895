@@ -1,5 +1,5 @@
 const supabaseUrl = 'https://piybzyheydavoujfptnx.supabase.co';
-const supabaseKey = '...'; // amanin key di production ya!
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpeWJ6eWhleWRhdm91amZwdG54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4ODc0OTksImV4cCI6MjA1NTQ2MzQ5OX0.iFy_6QuuCfzKFh5MAyIgkwVGM-X7ygkKkhsLM_JhUvg'; // amanin key di production ya!
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 const bucketName = "files";
 
