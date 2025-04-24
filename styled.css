@@ -1,4 +1,4 @@
-/* Layout dasar biar footer tetap di bawah */
+/* === Layout Dasar === */
 html, body {
   height: 100%;
   margin: 0;
@@ -25,24 +25,34 @@ footer {
 }
 
 header {
-  background-color: #63eed0;
+  background-image: url('https://i.postimg.cc/rsW9DrdC/bcg.jpg');
   color: rgba(17, 16, 16, 0.904);
   padding: 1em;
   text-align: center;
 }
 
 nav a {
-  color: white;
+  background-color: transparent;
+  color: rgba(15, 15, 15, 0.952);
   margin: 0 1em;
-  text-decoration: none;
+  font-size: 15px;
+  text-decoration: none; /* Ganti default ke none */
+  font-weight: bold; /* Tambah untuk menebalkan teks */
 }
 
+nav a:hover {
+  color: #007acc;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+
+/* === User Info & Logout === */
 #user-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: #f2f2f2;
+  background-color: #78e9e9;
 }
 
 #user-email {
@@ -58,23 +68,92 @@ nav a {
   cursor: pointer;
 }
 
-.upload-section,
-.file-list {
+/* === Upload Section === */
+.upload-section {
   margin-top: 30px;
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section h2 {
+  margin-top: 0;
+  color: #333;
 }
 
 input[type="file"] {
   margin-right: 10px;
 }
 
-.file-list ul {
+/* === Statistik Section === */
+.stats {
+  background-color: #fefefe;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stats h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.stats ul {
   list-style-type: none;
   padding: 0;
 }
 
-.file-list li {
-  margin: 5px 0;
+.stats li {
+  margin: 8px 0;
+  font-weight: bold;
 }
+
+/* === File List Section === */
+.file-list {
+  background-color: #fefefe;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.file-list h2 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+}
+
+.file-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.file-list li {
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.file-list li:hover {
+  background-color: #e0e0e0;
+}
+
+.file-list a {
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+}
+
+.file-list a:hover {
+  text-decoration: underline;
+}
+
+/* === Dark Mode === */
 body.dark {
   background-color: #121212;
   color: #f0f0f0;
@@ -89,4 +168,43 @@ body.dark #user-info {
 
 body.dark nav a {
   color: #f0f0f0;
+}
+
+body.dark .upload-section,
+body.dark .stats,
+body.dark .file-list {
+  background-color: #1f1f1f;
+  box-shadow: none;
+}
+
+body.dark .file-list li {
+  background-color: #2c2c2c;
+}
+
+body.dark .file-list li:hover {
+  background-color: #3a3a3a;
+}
+
+body.dark .file-list a {
+  color: #66bfff;
+}
+
+/* === Navbar Layout === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
 }
