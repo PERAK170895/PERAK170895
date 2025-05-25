@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Distribusi Nominal</title>
+  <link rel="stylesheet" href="list jual.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="kiri">
+      <h2>Daftar List Website</h2>
+      <table id="jual-list">
+        <thead>
+          <tr>
+            <th>Website</th>
+            <th>Telkomsel</th>
+            <th>XL</th>
+            <th>Status</th>
+            <th>Waktu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5">Memuat data...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tengah">
+      <h2>Nomor Tujuan</h2>
+      <h4>Telkomsel</h4>
+      <table class="input-table" id="telkomsel-table">
+        <thead>
+          <tr><th>No.</th><th>Nomor Tujuan</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h4>XL</h4>
+      <table class="input-table" id="xl-table">
+        <thead>
+          <tr><th>No.</th><th>Nomor Tujuan</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <button onclick="jualkanSemua()">Jualkan</button>
+    </div>
+
+    <div class="kanan">
+      <h2>Hasil Distribusi</h2>
+      <pre id="hasil"></pre>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="list jual.js"></script>
+</body>
+</html>

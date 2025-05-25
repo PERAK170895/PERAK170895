@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DAFTAR REQUES PULSA WEBSITE</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+ 
+  <div id="sidebar">
+    <h3>DAFTAR WEBSITE</h3>
+    <div id="website-list"></div>
+    <div id="sidebar-image">
+      <img src="https://i.postimg.cc/9QWm6kBm/dark-dsb.png" alt="Gambar Sidebar" style="width: 100%; margin-top: 10px;">
+    </div>
+   
+  </div>
+
+  <div id="main">
+  
+    <div id="form-section" style="display: none;">
+      <h2 id="selected-website-name"></h2>
+  
+      <label>Nominal Telkomsel:
+        <input type="number" id="telkomsel" placeholder="Masukkan nominal" />
+      </label><br />
+  
+      <label>Nominal XL:
+        <input type="number" id="xl" placeholder="Masukkan nominal" />
+      </label><br />
+  
+      <div style="margin-top: 10px;">
+        <button onclick="submitNominal()">Simpan</button>
+        <button id="skip-button" onclick="skipNominal()">Lewati (Skip)</button>
+      </div>
+    </div>
+    <h3 class="blink-text">DAFTAR REQUES PULSA WEBSITE</h3>
+    <div id="nominal-list">
+      <div id="summary" style="margin-bottom: 10px; font-weight: bold;">
+        Total Telkomsel: 0 | Total XL: 0
+      </div>
+    
+      <table id="nominal-table">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Website</th>
+            <th>Telkomsel</th>
+            <th>XL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Baris data akan diisi oleh scripts.js -->
+        </tbody>
+      </table>
+    </div>
+    
+      <!-- Tabel data akan dibuat otomatis oleh script.js -->
+    </div>
+  </div> <!-- Penutup #main -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
