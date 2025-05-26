@@ -212,3 +212,13 @@ th, td {
 th {
   background-color: #e22525;
 }
+.time-banner {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0;
+  background-color: #73aeee; /* Biru */
+  color: white; /* Putih */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+}
