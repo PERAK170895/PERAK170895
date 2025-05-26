@@ -201,3 +201,17 @@ function formatNominal(nominal) {
 }
 
 window.addEventListener('DOMContentLoaded', loadWebsiteList);
+// Fungsi untuk update waktu secara real-time
+function updateTime() {
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const timeString = now.toLocaleDateString('id-ID', options) + ' | ' + now.toLocaleTimeString('id-ID');
+
+  document.getElementById('current-time').textContent = timeString;
+}
+
+// Jalankan setiap detik
+setInterval(updateTime, 1000);
+
+// Jalankan saat halaman pertama kali dimuat
+updateTime();
