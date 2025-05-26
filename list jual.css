@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+  padding: 1rem;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  gap: 1rem;
+}
+
+.kiri, .tengah, .kanan {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #b5d3d3;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+
+th, td {
+  border: 1px solid #12df2ee5;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+th {
+  background-color: #2644ee;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
