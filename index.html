@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Registrasi Pengguna</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Form Registrasi</h2>
+    <form id="registerForm">
+      <label>Username:</label>
+      <input type="text" id="username" required>
+
+      <label>Password (6–12 karakter):</label>
+      <input type="password" id="password" required>
+
+      <label>Kode Akses (6 karakter):</label>
+      <input type="text" id="kode_akses" required>
+
+      <button type="submit">Daftar</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script type="module" src="register.js"></script>
+</body>
+</html>
