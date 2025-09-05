@@ -2,21 +2,26 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Form registrasi pengguna dengan username, password, dan kode akses.">
+  <meta name="keywords" content="registrasi, daftar akun, form login, kode akses">
+  <meta name="author" content="Nama Kamu">
   <title>Registrasi Pengguna</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="form-container">
-    <h2>Form Registrasi</h2>
+    <h1>Form Registrasi</h1>
     <form id="registerForm">
-      <label>Username:</label>
-      <input type="text" id="username" required>
+      
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required minlength="3" maxlength="20" placeholder="Masukkan username">
 
-      <label>Password (6–12 karakter):</label>
-      <input type="password" id="password" required>
+      <label for="password">Password (6–12 karakter):</label>
+      <input type="password" id="password" name="password" required minlength="6" maxlength="12" placeholder="Masukkan password">
 
-      <label>Kode Akses (6 karakter):</label>
-      <input type="text" id="kode_akses" required>
+      <label for="kode_akses">Kode Akses (6 karakter):</label>
+      <input type="text" id="kode_akses" name="kode_akses" required minlength="6" maxlength="6" pattern="[A-Za-z0-9]{6}" placeholder="XXXXXX">
 
       <button type="submit">Daftar</button>
     </form>
